@@ -1,14 +1,14 @@
 FROM alpine:latest
 
+COPY "cmd.sh" "/root/cmd.sh"
+
 RUN apk update && \
 apk add nginx && \
 mkdir -p /www/data && \
-mkdir -p /run/nginx
+mkdir -p /run/nginx && \
+chmod +x ~/cmd.sh
 
 COPY "default.conf" "/etc/nginx/conf.d"
 COPY "index.html" "/www/data"
 
-RUN sed -i s/HOSTNAME/$(hostname)/g /www/data/index.html
-
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD /root/cmd.sh
