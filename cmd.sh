@@ -1,2 +1,2 @@
-sed -i s/HOSTNAME/$(hostname)/g /www/data/index.html 
+sed -i s/HOSTNAME/$(hostname)-$((RANDOM % 99999999 ))/g /www/data/index.html
 nginx -g 'daemon off;'
