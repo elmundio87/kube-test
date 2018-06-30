@@ -1,0 +1,1 @@
+Get service URL: minikube service kube-test --url
